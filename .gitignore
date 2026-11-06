@@ -1,3 +1,4 @@
 out/
 out-mock/
 node_modules/
+results/cache/

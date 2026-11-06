@@ -1,0 +1,36 @@
+name: Run corridor pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - corridor.mjs
+      - waypoints.json
+      - .github/workflows/corridor.yml
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Self-test
+        run: node corridor.mjs --selftest
+      - name: Run pipeline
+        run: node corridor.mjs --out results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: corridor-results
+          path: results
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results
+          git diff --cached --quiet || git commit -m "Update corridor results [skip ci]"
+          git push
