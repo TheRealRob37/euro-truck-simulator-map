@@ -1,0 +1,10 @@
+{
+  "name": "yerevan-akhalkalaki",
+  "note": "Coordinates are approximate. The script snaps each one to the nearest road and prints how far it moved; fix any that move more than ~300 m.",
+  "waypoints": [
+    { "name": "Yerevan (Republic Square)", "lat": 40.1776, "lon": 44.5126 },
+    { "name": "Gyumri (Vartanants Square)", "lat": 40.7893, "lon": 43.8475 },
+    { "name": "Ninotsminda (Bavra crossing side)", "lat": 41.2667, "lon": 43.5833 },
+    { "name": "Akhalkalaki", "lat": 41.4056, "lon": 43.4867 }
+  ]
+}
